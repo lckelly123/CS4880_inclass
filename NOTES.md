@@ -1,0 +1,1 @@
+I tested main.py with restoration_graph and toy_test in parallel. Both worked fully and neither affected the other. This is because planner.py does not care about the other files as long as it has START,GOAL, and the appropriate setup with available_actions and apply_action.
