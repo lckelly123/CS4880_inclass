@@ -101,6 +101,8 @@ def test_large_action_set_terminates():
     GOAL_fake2 = frozenset(ACTIONS_fake2.keys())
     START_fake2 = frozenset()
     assert bfs_search(START_fake2, GOAL_fake2, available_actions3, apply_action3) is not None
+    plan = bfs_search(START_fake2, GOAL_fake2, available_actions3, apply_action3)
+    assert is_valid_plan(plan,ACTIONS_fake2) is True
     
 
 
