@@ -8,9 +8,11 @@ sys.path.insert(0, str(project_root))
 from scr.restoration_graph import ACTIONS, START, GOAL, available_actions, apply_action
 from scr.planner import bfs_search
 
-def is_valid_plan(plan, actions=ACTIONS):
+# TODO: accept an optional tranche_cap for the Lab 3 funding rule.
+def is_valid_plan(plan, actions=ACTIONS, tranche_cap=None):
     """A plan is valid if every action's prerequisites are satisfied by
-    the actions before it, and every required action appears exactly once."""
+    the actions before it, and every required action appears exactly once.
+    If supplied, tranche_cap limits the cost of the first two actions."""
     completed = set()
     for action in plan:
         if action in completed:
@@ -18,6 +20,10 @@ def is_valid_plan(plan, actions=ACTIONS):
         if not actions[action]["requires"].issubset(completed):
             return False          # prerequisite violated
         completed.add(action)
+    # TODO: reject plans whose first two actions exceed tranche_cap.
+    if tranche_cap is not None:
+        if sum(actions[action]["cost"] for action in plan[:2]) > tranche_cap:
+            return False
     return completed == set(actions.keys())
 
 
