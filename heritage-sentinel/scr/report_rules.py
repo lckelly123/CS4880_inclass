@@ -23,7 +23,7 @@ CLAUSES = [
     rule("invalid:corrosion_on_organic", "damage_corrosion", "organic"),
     rule("invalid:none_but_damaged", "severity_none", "has_damage"),
     rule("invalid:structural_risk_marked_minor", "structural_risk", "severity_minor"),
-    rule("invalid:corrosion_on_ceramic", "material_ceramic", "damage_corrosion"),
-    rule("invalid:wood_rot_crack_marked_minor", "material_wood",
-         "damage_rot", "damage_crack", "severity_minor"),
+    #2 additional rules (disabled now)
+    #rule("invalid:corrosion_on_ceramic", "material_ceramic", "damage_corrosion"),
+    #rule("invalid:wood_rot_crack_marked_minor", "material_wood","damage_rot", "damage_crack", "severity_minor"),
 ]
